@@ -8,7 +8,7 @@ var interact_input: int = 0
 
 #Interact
 export var interact_zone_path: NodePath
-#onready var interact_zone: Area2D = get_node(interact_zone_path)
+onready var interact_zone: Area2D = get_node(interact_zone_path)
 
 #General
 var velocity: Vector2 = Vector2.ZERO
@@ -38,29 +38,25 @@ var remember_jump_length: float = 0.1
 func _physics_process(delta: float) -> void:
 	input()
 	move(delta)
-#	interact()
-#
-#
-#func interact() -> void:
-#	if interact_input:
-#		var interactables = interact_zone.get_overlapping_bodies() #bodies
-#		if interactables.size() > 0:
-#			get_closest_to_point(interactables, position).interaction(self)
-#		interactables = interact_zone.get_overlapping_areas() #areas
-#		if interactables.size() == 1:
-#			interactables[0].interaction(self)
-#		elif interactables.size() > 1:
-#			print("2 area interactables")
-#
-#func get_closest_to_point(point_array: Array, point: Vector2) -> Node2D:
-#	var closest_node: Node2D = null
-#	var closest_node_distance: float = 0
-#	for i in point_array:
-#		var current_node_distance: float = point.distance_to(i.global_position)
-#		if closest_node == null or current_node_distance < closest_node_distance:
-#			closest_node = i
-#			closest_node_distance = current_node_distance
-#	return closest_node
+	interact()
+
+
+func interact() -> void:
+	if interact_input:
+		var interactables = interact_zone.get_overlapping_bodies() #bodies
+		interactables.append_array(interact_zone.get_overlapping_areas())
+		if interactables.size() > 0:
+			get_closest_to_point(interactables, position).interaction(self)
+
+func get_closest_to_point(point_array: Array, point: Vector2) -> Node2D:
+	var closest_node: Node2D = null
+	var closest_node_distance: float = 0
+	for i in point_array:
+		var current_node_distance: float = point.distance_to(i.global_position)
+		if closest_node == null or current_node_distance < closest_node_distance:
+			closest_node = i
+			closest_node_distance = current_node_distance
+	return closest_node
 
 
 func move(delta: float) -> void:
@@ -136,12 +132,11 @@ func input() -> void:
 	#Jump
 	if Input.is_action_just_pressed("jump"):
 		jump_input = 1
-	#Interact
+	#Interact/Dialgue
 	if Input.is_action_just_released("interact"):
-		zoom()
 		interact_input = 1
 
-
+#Zooms out and then back in
 func zoom() -> void:
 	$AnimationPlayer.play("zoom out")
 	yield(get_tree().create_timer(2), "timeout")

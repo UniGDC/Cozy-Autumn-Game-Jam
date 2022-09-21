@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Minecraft.tres" type="DynamicFont" id=1]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog Box" type="ColorRect" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -112.0
+margin_right = 280.0
+margin_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color( 1, 1, 0.882353, 1 )
+
+[node name="Name" type="RichTextLabel" parent="CanvasLayer/Dialog Box"]
+modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
+margin_right = 225.0
+margin_bottom = 40.0
+theme = SubResource( 1 )
+text = "Name"

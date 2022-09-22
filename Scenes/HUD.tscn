@@ -1,15 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Art/Minecraft.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/DialogueBox.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/DialogueTheme.tres" type="Theme" id=2]
 
-[sub_resource type="Theme" id=1]
-default_font = ExtResource( 1 )
+[sub_resource type="Animation" id=1]
+resource_name = "Dialogue Arrow side to side"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -410 ), Vector2( 26, -410 ), Vector2( 16, -410 ) ]
+}
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
 
 [node name="Dialog Box" type="ColorRect" parent="CanvasLayer"]
 anchor_left = 0.5
@@ -23,10 +38,37 @@ margin_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color( 1, 1, 0.882353, 1 )
+script = ExtResource( 1 )
+dialoguePath = "res://dialogue.json"
 
 [node name="Name" type="RichTextLabel" parent="CanvasLayer/Dialog Box"]
 modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
-margin_right = 225.0
-margin_bottom = 40.0
-theme = SubResource( 1 )
+margin_left = 21.0
+margin_top = 6.0
+margin_right = 246.0
+margin_bottom = 46.0
+theme = ExtResource( 2 )
 text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/Dialog Box"]
+modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
+margin_left = 20.0
+margin_top = 27.0
+margin_right = 703.0
+margin_bottom = 103.0
+rect_scale = Vector2( 0.75, 0.75 )
+theme = ExtResource( 2 )
+visible_characters = 1284
+text = "Text goes here"
+
+[node name="Indicator" type="Polygon2D" parent="CanvasLayer/Dialog Box"]
+modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
+position = Vector2( 16, -410 )
+scale = Vector2( 1, 1.29412 )
+color = Color( 0.32549, 0.227451, 0.266667, 1 )
+polygon = PoolVector2Array( 505, 372, 505, 389, 517, 381 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Box/Indicator"]
+"anims/Dialogue Arrow side to side" = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Dialog Box"]

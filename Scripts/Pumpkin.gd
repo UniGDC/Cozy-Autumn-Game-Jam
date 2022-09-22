@@ -1,5 +1,8 @@
 extends Node2D
 
+export var hudPath: NodePath
+
+onready var HUD_Node: Control = get_node(hudPath)
 
 func interaction(player: Player) -> void:
-	print("dialogue") #this where the dialogue code is activated, feel free to delete the print
+	pass

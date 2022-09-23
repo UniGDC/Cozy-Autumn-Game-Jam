@@ -24,6 +24,10 @@ config/name="cozyautumngame"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scenes/Global.tscn"
+
 [display]
 
 window/size/width=640

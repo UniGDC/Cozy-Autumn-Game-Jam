@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://DialogueTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/DialogueBox.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Arrow STS"
+length = 0.65
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -420 ), Vector2( 16, -420 ), Vector2( 24, -420 ), Vector2( 16, -420 ), Vector2( 0, -420 ) ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 20
+script = ExtResource( 2 )
+dialogPath = "res://dialogue.json"
+
+[node name="DialogBox" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -112.0
+margin_right = 280.0
+margin_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color( 1, 1, 0.882353, 1 )
+
+[node name="Name" type="RichTextLabel" parent="DialogBox"]
+modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
+margin_left = 21.0
+margin_top = 6.0
+margin_right = 246.0
+margin_bottom = 46.0
+theme = ExtResource( 1 )
+text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="DialogBox"]
+modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
+margin_left = 20.0
+margin_top = 27.0
+margin_right = 497.0
+margin_bottom = 87.0
+theme = ExtResource( 1 )
+text = "Text goes here"
+
+[node name="Indicator" type="Polygon2D" parent="DialogBox"]
+modulate = Color( 0.32549, 0.227451, 0.266667, 1 )
+position = Vector2( 13.9399, -420 )
+scale = Vector2( 1, 1.29412 )
+color = Color( 0.32549, 0.227451, 0.266667, 1 )
+polygon = PoolVector2Array( 505, 372, 505, 389, 521, 380.954 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Indicator"]
+"anims/Arrow STS" = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="DialogBox"]

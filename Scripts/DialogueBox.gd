@@ -1,31 +1,38 @@
-extends ColorRect
-
-export var dialoguePath = "res://dialogue.json"
+extends CanvasLayer
+ 
+export(String, FILE, "*.json") var dialogPath
 export(float) var textSpeed = 0.05
-
-var dialogue
-
+ 
+var dialog
+ 
 var phraseNum = 0
 var finished = false
-
+ 
 func _ready():
-	$Timer.wait_time = textSpeed
-	dialogue = getDialogue()
-	assert(dialogue, "Dialog not found")
+	$DialogBox.visible = false
 
+func start():
+	$DialogBox/Timer.wait_time = textSpeed
+	
+	$DialogBox.visible = true
+	
+	dialog = getDialog()
+	assert(dialog, "Dialog not found")
+	nextPhrase()
+ 
 func _process(_delta):
-	$Indicator.visible = finished
+	$DialogBox/Indicator.visible = finished
 	if Input.is_action_just_pressed("interact"):
 		if finished:
 			nextPhrase()
 		else:
-			$Text.visible_characters = len($Text.text)
-
-func getDialogue() -> Array:
+			$DialogBox/Text.visible_characters = len($DialogBox/Text.text)
+ 
+func getDialog() -> Array:
 	var f = File.new()
-	assert(f.file_exists(dialoguePath), "File path does not exist")
+	assert(f.file_exists(dialogPath), "File path does not exist")
 	
-	f.open(dialoguePath, File.READ)
+	f.open(dialogPath, File.READ)
 	var json = f.get_as_text()
 	
 	var output = parse_json(json)
@@ -34,30 +41,30 @@ func getDialogue() -> Array:
 		return output
 	else:
 		return []
-		
+ 
 func nextPhrase() -> void:
-	if phraseNum >= len(dialogue):
+	if phraseNum >= len(dialog):
 		queue_free()
+		print("poop finished")
 		return
 	
 	finished = false
 	
-	$Name.bbcode_text = dialogue[phraseNum]["Name"]
-	$Text.bbcode_text = dialogue[phraseNum]["Name"]
+	$DialogBox/Name.bbcode_text = dialog[phraseNum]["Name"]
+	$DialogBox/Text.bbcode_text = dialog[phraseNum]["Text"]
 	
-	$Text.visible_characters = 0
+	$DialogBox/Text.visible_characters = 0
 	
-	while $Text.visible_characters < len($Text.text):
-		$Text.visible_characters += 1
+	while $DialogBox/Text.visible_characters < len($DialogBox/Text.text):
+		$DialogBox/Text.visible_characters += 1
 		
-		$Timer.start()
-		yield($Timer, "timeout")
+		$DialogBox/Timer.start()
+		yield($DialogBox/Timer, "timeout")
 	
 	finished = true
 	phraseNum += 1
+	$DialogBox/Indicator/AnimationPlayer.play("Arrow STS")
 	return
-	
-
 
 
 

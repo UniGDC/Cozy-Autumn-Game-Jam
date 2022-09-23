@@ -13,6 +13,17 @@ onready var interact_zone: Area2D = get_node(interact_zone_path)
 #General
 var velocity: Vector2 = Vector2.ZERO
 
+#Look
+var looking_right: int = 1
+export var sprite_path: NodePath
+onready var sprite: Sprite = get_node(sprite_path)
+
+#Animation
+export var anim_player_path: NodePath
+onready var anim_player: AnimationPlayer = get_node(anim_player_path)
+var state: int = 0
+enum State {IDLE, WALK, JUMP, LAND, FALL}
+
 #Movement
 export var move_speed: float
 export var move_acc: float
@@ -37,8 +48,19 @@ var remember_jump_length: float = 0.1
 
 func _physics_process(delta: float) -> void:
 	input()
+	look()
 	move(delta)
 	interact()
+	animate()
+
+
+func look() -> void:
+	if velocity.x >= 0:
+		looking_right = 1
+		sprite.flip_h = false
+	else:
+		looking_right = -1
+		sprite.flip_h = true
 
 
 func interact() -> void:
@@ -47,6 +69,46 @@ func interact() -> void:
 		interactables.append_array(interact_zone.get_overlapping_areas())
 		if interactables.size() > 0:
 			get_closest_to_point(interactables, position).interaction(self)
+
+
+func animate() -> void:
+	if velocity.y < 0:
+		state = State.JUMP
+	elif velocity.y > 0.2:
+		state = State.FALL
+	elif abs(velocity.x) > 0.1:
+		state = State.WALK
+	elif velocity.x < 0.1 && state == State.FALL && is_on_floor():
+		state = State.LAND
+	else:
+		state = State.IDLE
+		
+	match state:
+		State.JUMP:
+			anim_player.play("Jump")
+		State.FALL:
+			anim_player.play("Fall")
+		State.WALK:
+			anim_player.play("Walk")
+		State.IDLE:
+			var idle_f = rand_range(0,2.3)
+			var idle_anim: String
+			
+			if idle_f < 1.4:
+				idle_anim = "Idle 1"
+			elif idle_f < 2:
+				idle_anim = "Idle 2"
+			elif idle_f <= 2.3:
+				idle_anim = "Idle 3"
+
+				
+			if anim_player.current_animation == "Walk":
+				anim_player.play(idle_anim)
+			else:
+				anim_player.queue(idle_anim)
+		State.LAND:
+			anim_player.play("Land")
+
 
 func get_closest_to_point(point_array: Array, point: Vector2) -> Node2D:
 	var closest_node: Node2D = null

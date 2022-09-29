@@ -1,11 +1,10 @@
 extends Node2D
 
-export var hudPath: NodePath
-
-onready var HUD_Node: Control = get_node(hudPath)
+export var dialogPath: NodePath
+var main: Node2D = get_parent()
 
 func interaction(player: Player) -> void:
-	var dialogue_player = get_node_or_null("CanvasLayer")
+	var dialog_player = get_node_or_null(dialogPath)
 		
-	if dialogue_player:
-		dialogue_player.start()
+	if dialog_player:
+		dialog_player.start(player)

@@ -7,11 +7,17 @@ var dialog
  
 var phraseNum = 0
 var finished = false
- 
+var player: Player 
+
 func _ready():
 	$DialogBox.visible = false
 
-func start():
+func start(player: Player):
+	self.player = player
+	if !dialog:
+		player.zoom_out()
+		player.dialog = true
+	
 	$DialogBox/Timer.wait_time = textSpeed
 	
 	$DialogBox.visible = true
@@ -44,8 +50,9 @@ func getDialog() -> Array:
  
 func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
+		player.zoom_in()
+		player.dialog = false
 		queue_free()
-		print("poop finished")
 		return
 	
 	finished = false

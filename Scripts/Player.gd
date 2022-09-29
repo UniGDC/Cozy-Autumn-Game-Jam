@@ -10,6 +10,10 @@ var interact_input: int = 0
 export var interact_zone_path: NodePath
 onready var interact_zone: Area2D = get_node(interact_zone_path)
 
+#Dialog
+var dialog: bool = false
+
+
 #General
 var velocity: Vector2 = Vector2.ZERO
 
@@ -49,8 +53,11 @@ var remember_jump_length: float = 0.1
 func _physics_process(delta: float) -> void:
 	input()
 	look()
-	move(delta)
-	interact()
+	if !dialog:
+		move(delta)
+		interact()
+	else:
+		velocity.x = sign(velocity.x)/20
 	animate()
 
 
@@ -197,12 +204,14 @@ func input() -> void:
 	#Interact/Dialgue
 	if Input.is_action_just_released("interact"):
 		interact_input = 1
-
-#Zooms out and then back in
-func zoom() -> void:
-	$AnimationPlayer.play("zoom out")
-	yield(get_tree().create_timer(2), "timeout")
-	$AnimationPlayer.play("zoom in")
+		
+	
+func zoom_in() -> void:
+	$Camera2D/AnimationPlayer.play("zoom in")
+	
+	
+func zoom_out() -> void:
+	$Camera2D/AnimationPlayer.play("zoom out")
 
 
 func die() -> void:

@@ -146,12 +146,13 @@ script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 45, 39 )
+jump_height = 48.0
 
 [node name="Platform" type="TileMap" parent="."]
 tile_set = SubResource( 8 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 1114138, 7, 0, 1114139, 7, 3, 1245203, 7, 0, 1245204, 7, 2, 1245205, 7, 1, 1245206, 7, 3, 1245213, 7, 0, 1245214, 7, 2, 1310734, 7, 0, 1310735, 7, 3 )
+tile_data = PoolIntArray( 1114138, 7, 0, 1114139, 7, 3, 1245203, 7, 0, 1245204, 7, 2, 1245205, 7, 1, 1245206, 7, 3, 1245213, 7, 0, 1245214, 7, 3, 1310734, 7, 0, 1310735, 7, 3 )
 
 [node name="Background" type="TileMap" parent="."]
 z_index = -1

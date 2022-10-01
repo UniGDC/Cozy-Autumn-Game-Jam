@@ -23,6 +23,7 @@ tracks/0/keys = {
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 20
+visible = false
 script = ExtResource( 2 )
 dialogPath = "res://dialogue.json"
 

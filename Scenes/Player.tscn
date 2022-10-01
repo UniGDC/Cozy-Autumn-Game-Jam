@@ -174,13 +174,13 @@ script = ExtResource( 2 )
 interact_zone_path = NodePath("InteractionZone")
 sprite_path = NodePath("Sprite")
 anim_player_path = NodePath("AnimationPlayer")
-move_speed = 200.0
-move_acc = 40.0
+move_speed = 160.0
+move_acc = 30.0
 idle_deacc = 0.2
 jump_height = 40.0
 jump_duration = 0.3
-fall_duration = 0.2
-max_fall = 2000.0
+fall_duration = 0.25
+max_fall = 1500.0
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 10

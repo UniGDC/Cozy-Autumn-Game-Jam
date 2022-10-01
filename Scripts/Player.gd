@@ -114,6 +114,7 @@ func animate() -> void:
 			else:
 				anim_player.queue(idle_anim)
 		State.LAND:
+			pass
 			anim_player.play("Land")
 
 

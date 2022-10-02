@@ -19,7 +19,7 @@ func start(player: Player):
 		player.dialog = true
 	
 	$DialogBox/Timer.wait_time = textSpeed
-	
+	get_node("%AnimPlayer").play("Talk")
 	$DialogBox.visible = true
 	
 	dialog = getDialog()
@@ -52,6 +52,7 @@ func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
 		player.zoom_in()
 		player.dialog = false
+		get_node("%AnimPlayer").play("RESET")
 		queue_free()
 		return
 	

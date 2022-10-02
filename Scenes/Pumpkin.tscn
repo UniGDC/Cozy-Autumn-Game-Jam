@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Pumpkin.gd" type="Script" id=1]
 [ext_resource path="res://Art/gameassets.png" type="Texture" id=2]
@@ -11,6 +11,39 @@ region = Rect2( 0, 0, 80, 16 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6.49997, 8.00002 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Talk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [node name="Pumpkin" type="StaticBody2D"]
 collision_layer = 3
 script = ExtResource( 1 )
@@ -20,6 +53,7 @@ dialogPath = NodePath("CanvasLayer")
 z_index = 15
 texture = SubResource( 2 )
 hframes = 5
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1.5 )
@@ -28,4 +62,7 @@ shape = SubResource( 3 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
 
-[editable path="CanvasLayer"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 5 )
+anims/Talk = SubResource( 4 )

@@ -61,6 +61,7 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
+visible = true
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
@@ -39,8 +39,20 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 [sub_resource type="ConvexPolygonShape2D" id=31]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 
+[sub_resource type="ConvexPolygonShape2D" id=32]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=33]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=34]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
+
 [sub_resource type="TileSet" id=11]
-6/name = "gameassets.png 6"
+6/name = "bookshelf"
 6/texture = ExtResource( 6 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
@@ -124,6 +136,75 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
+8/name = "gameassets.png 8"
+8/texture = ExtResource( 6 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 48, 48, 32 )
+8/tile_mode = 1
+8/autotile/bitmask_mode = 2
+8/autotile/bitmask_flags = [ Vector2( 0, 0 ), 48, Vector2( 0, 1 ), 16, Vector2( 1, 0 ), 56, Vector2( 2, 0 ), 24 ]
+8/autotile/icon_coordinate = Vector2( 0, 1 )
+8/autotile/tile_size = Vector2( 16, 16 )
+8/autotile/spacing = 0
+8/autotile/occluder_map = [  ]
+8/autotile/navpoly_map = [  ]
+8/autotile/priority_map = [  ]
+8/autotile/z_index_map = [  ]
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 32 )
+8/shape_one_way = true
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 32 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 33 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 34 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 35 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "record player"
+9/texture = ExtResource( 6 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 16, 16, 16, 32 )
+9/tile_mode = 2
+9/autotile/icon_coordinate = Vector2( 0, 0 )
+9/autotile/tile_size = Vector2( 16, 16 )
+9/autotile/spacing = 0
+9/autotile/occluder_map = [  ]
+9/autotile/navpoly_map = [  ]
+9/autotile/priority_map = [  ]
+9/autotile/z_index_map = [  ]
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 3, 16, 3, 16, 0, 0, 0 )
@@ -141,7 +222,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 
 [sub_resource type="TileSet" id=8]
-7/name = "gameassets.png 7"
+7/name = "platform"
 7/texture = ExtResource( 6 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
@@ -200,7 +281,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=2]
-1/name = "floor_tile.png 1"
+1/name = "Wall"
 1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
@@ -214,7 +295,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
-3/name = "floor_tile.png 3"
+3/name = "Floor"
 3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
@@ -246,13 +327,13 @@ position = Vector2( 64, 56 )
 tile_set = SubResource( 11 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 852000, 6, 0, 852001, 6, 2, 917536, 6, 131072, 917537, 6, 131074, 1179677, 6, 3, 1179678, 6, 5, 1245194, 6, 0, 1245195, 6, 2, 1310730, 6, 131076, 1310731, 6, 131074 )
+tile_data = PoolIntArray( 327707, 6, 3, 327708, 6, 5, 852000, 6, 0, 852001, 6, 2, 917536, 6, 131072, 917537, 6, 131074, 1179677, 6, 3, 1179678, 6, 5, 1245194, 6, 0, 1245195, 6, 2, 1310728, 9, 65536, 1310730, 6, 131076, 1310731, 6, 131077, 1376262, 8, 0, 1376263, 8, 1, 1376264, 8, 2, 1376272, 8, 0, 1376273, 8, 2 )
 
 [node name="Platform" type="TileMap" parent="."]
 tile_set = SubResource( 8 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 262144, 7, 0, 262145, 7, 1, 262146, 7, 2, 262147, 7, 1, 262148, 7, 1, 262149, 7, 3, 262154, 7, 0, 262155, 7, 2, 262156, 7, 2, 262157, 7, 3, 262161, 7, 0, 262162, 7, 3, 327701, 7, 0, 327702, 7, 1, 327703, 7, 3, 393242, 7, 0, 393243, 7, 1, 393244, 7, 3, 524306, 7, 0, 524307, 7, 1, 524308, 7, 1, 524309, 7, 1, 524310, 7, 3, 655367, 7, 4, 655374, 7, 0, 655375, 7, 3, 720905, 7, 0, 720906, 7, 3, 720921, 7, 0, 720922, 7, 2, 720923, 7, 3, 851971, 7, 0, 851972, 7, 3, 851980, 7, 0, 851981, 7, 2, 851982, 7, 1, 851983, 7, 2, 851984, 7, 1, 851985, 7, 2, 851986, 7, 3, 983060, 7, 0, 983061, 7, 3, 983071, 7, 0, 983072, 7, 1, 983073, 7, 3, 1048599, 7, 4, 1048605, 7, 4, 1114138, 7, 0, 1114139, 7, 3, 1245203, 7, 0, 1245204, 7, 2, 1245205, 7, 1, 1245206, 7, 3, 1245213, 7, 0, 1245214, 7, 3, 1310733, 7, 0, 1310734, 7, 3, 1376266, 7, 0, 1376267, 7, 3, 1376272, 7, 0, 1376273, 7, 1, 1376274, 7, 3 )
+tile_data = PoolIntArray( 262144, 7, 0, 262145, 7, 1, 262146, 7, 2, 262147, 7, 1, 262148, 7, 1, 262149, 7, 3, 262154, 7, 0, 262155, 7, 2, 262156, 7, 2, 262157, 7, 3, 262161, 7, 0, 262162, 7, 3, 262175, 7, 0, 262176, 7, 1, 262177, 7, 3, 327701, 7, 0, 327702, 7, 1, 327703, 7, 3, 393242, 7, 0, 393243, 7, 1, 393244, 7, 3, 458787, 7, 0, 458788, 7, 3, 524306, 7, 0, 524307, 7, 1, 524308, 7, 1, 524309, 7, 1, 524310, 7, 3, 589855, 7, 0, 589856, 7, 2, 589857, 7, 3, 655367, 7, 4, 655374, 7, 0, 655375, 7, 3, 720905, 7, 0, 720906, 7, 3, 720921, 7, 0, 720922, 7, 2, 720923, 7, 3, 851971, 7, 0, 851972, 7, 3, 851980, 7, 0, 851981, 7, 2, 851982, 7, 1, 851983, 7, 2, 851984, 7, 1, 851985, 7, 2, 851986, 7, 3, 983060, 7, 0, 983061, 7, 3, 983071, 7, 0, 983072, 7, 1, 983073, 7, 3, 1048599, 7, 4, 1048605, 7, 4, 1114138, 7, 0, 1114139, 7, 3, 1245203, 7, 0, 1245204, 7, 2, 1245205, 7, 1, 1245206, 7, 3, 1245213, 7, 0, 1245214, 7, 3, 1310733, 7, 0, 1310734, 7, 3, 1376266, 7, 0, 1376267, 7, 3 )
 
 [node name="Background" type="TileMap" parent="."]
 z_index = -1
@@ -323,3 +404,9 @@ position = Vector2( 435, 174 )
 
 [node name="Candle16" parent="." instance=ExtResource( 8 )]
 position = Vector2( 440, 174 )
+
+[node name="Candle18" parent="." instance=ExtResource( 8 )]
+position = Vector2( 123, 334 )
+
+[node name="Candle17" parent="." instance=ExtResource( 8 )]
+position = Vector2( 119, 334 )

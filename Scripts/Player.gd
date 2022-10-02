@@ -16,6 +16,7 @@ var dialog: bool = false
 
 #General
 var velocity: Vector2 = Vector2.ZERO
+var near_wall: bool = false
 
 #Look
 var looking_right: int = 1
@@ -64,10 +65,12 @@ func _physics_process(delta: float) -> void:
 func look() -> void:
 	if velocity.x >= 0:
 		looking_right = 1
-		sprite.flip_h = false
+		sprite.scale.x = 1
+		$Head.scale.x = 1
 	else:
 		looking_right = -1
-		sprite.flip_h = true
+		sprite.scale.x = -1
+		$Head.scale.x = -1
 
 
 func interact() -> void:
@@ -83,7 +86,7 @@ func animate() -> void:
 		state = State.JUMP
 	elif velocity.y > 0.2:
 		state = State.FALL
-	elif abs(velocity.x) > 0.1:
+	elif abs(velocity.x) > 	0.1:
 		state = State.WALK
 	elif velocity.x < 0.1 && state == State.FALL && is_on_floor():
 		state = State.LAND
@@ -143,6 +146,14 @@ func move(delta: float) -> void:
 	#clamps x velocity to recoil value
 	velocity.x = clamp(velocity.x, -move_speed, move_speed)
 	
+	if is_on_wall():
+		near_wall = true
+	if !$Head.get_overlapping_bodies():
+		near_wall = false
+	
+	if near_wall:
+		velocity.x = sign(velocity.x)/20
+		
 	#Jumping
 	if is_on_floor():
 		if reset_y_vel:
@@ -162,7 +173,7 @@ func move(delta: float) -> void:
 		reset_y_vel = true
 		coyote_time()
 		apply_gravity(delta)
-	
+		
 	move_and_slide(velocity, Vector2.UP)
 
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/soulfully-91215.mp3-ba6cf1102f178b3dc189316804925f07.mp3str"
+
+[deps]
+
+source_file="res://Art/soulfully-91215.mp3"
+dest_files=[ "res://.import/soulfully-91215.mp3-ba6cf1102f178b3dc189316804925f07.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

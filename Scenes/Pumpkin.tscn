@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Pumpkin.gd" type="Script" id=1]
 [ext_resource path="res://Art/gameassets.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/DialogueBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/CtrlKey.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -44,6 +45,19 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.681564 )
+colors = PoolColorArray( 0.523438, 0.523438, 0.523438, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=7]
+gradient = SubResource( 6 )
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 8, 6.5 )
+
 [node name="Pumpkin" type="StaticBody2D"]
 collision_layer = 3
 script = ExtResource( 1 )
@@ -61,9 +75,26 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
-visible = true
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 anims/RESET = SubResource( 5 )
 anims/Talk = SubResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = SubResource( 7 )
+energy = 2.0
+
+[node name="CtrlKey" parent="." instance=ExtResource( 4 )]
+margin_left = -6.0
+margin_top = -15.0
+margin_right = 44.0
+margin_bottom = 25.0
+
+[node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone"]
+position = Vector2( 0, 1.5 )
+shape = SubResource( 8 )

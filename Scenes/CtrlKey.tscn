@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://DialogueTheme.tres" type="Theme" id=1]
+
+[node name="CtrlKey" type="RichTextLabel"]
+margin_right = 50.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.3, 0.3 )
+theme = ExtResource( 1 )
+text = "CTRL"

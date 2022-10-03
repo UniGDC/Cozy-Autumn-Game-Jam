@@ -1,8 +1,78 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/soulfully-91215.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Art/refined-style-119195.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Levels/Level 2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Levels/Level 3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Levels/Level 4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Levels/Level 5.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Levels/Win.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Art/Among Us Kill  Sound Effect.mp3" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
-level_array = [ ExtResource( 2 ) ]
+level_dialogue = [ [ "Squirrel!", "What are you doing here?", "Go back outside.", "Who am I?", "I'm a pumpkin." ], [ "Squirrel!", "Why are you still here?", "Go out there and plant some acorns.", "GO!" ], [ "squirrel...", "You ask why am I here?", "I was mistreated by my farmer.", "He grew me for a competition and when I didn't win.", "The sucker left me on this shelf to rot!", "just leave me." ], [ "If you are so stubborn to stay then I have something for you.", "Come up here one more time." ], [ "Here!", "Take this knife and bag.", "You know the rest.", "Ready?", "1..", "2..", "3.." ] ]
+level_array = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
+win_screen = ExtResource( 9 )
+
+[node name="KillEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -15.0
+
+[node name="MusicHappy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+
+[node name="MusicQuiet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+"anims/fade in" = SubResource( 2 )
+"anims/fade out" = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="."]

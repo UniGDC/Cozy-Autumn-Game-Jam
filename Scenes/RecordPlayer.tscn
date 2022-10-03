@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/gameassets.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/RecordPlayer.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/CtrlKey.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 1.5 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 17, 16, 14, 32 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.681564 )
+colors = PoolColorArray( 0.523438, 0.523438, 0.523438, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 5 )
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 0, 0 )
+
+[node name="RecordPlayer" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 6.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = 20
+texture = SubResource( 2 )
+vframes = 2
+frame = 1
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = SubResource( 4 )
+energy = 2.0
+
+[node name="CtrlKey" parent="." instance=ExtResource( 3 )]
+margin_left = -6.0
+margin_top = -11.0
+margin_right = 44.0
+margin_bottom = 29.0

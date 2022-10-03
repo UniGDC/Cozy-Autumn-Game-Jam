@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/refined-style-119195.mp3-19387788a9c69effaaaa5622bab55591.mp3str"
+
+[deps]
+
+source_file="res://Art/refined-style-119195.mp3"
+dest_files=[ "res://.import/refined-style-119195.mp3-19387788a9c69effaaaa5622bab55591.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

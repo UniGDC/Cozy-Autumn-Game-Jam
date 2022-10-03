@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Among Us Kill  Sound Effect.mp3-ed9c92cec2540aff50f6d40c904f3feb.mp3str"
+
+[deps]
+
+source_file="res://Art/Among Us Kill  Sound Effect.mp3"
+dest_files=[ "res://.import/Among Us Kill  Sound Effect.mp3-ed9c92cec2540aff50f6d40c904f3feb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

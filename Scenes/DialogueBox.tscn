@@ -26,6 +26,7 @@ layer = 100
 visible = false
 script = ExtResource( 2 )
 dialogPath = "res://dialogue.json"
+textSpeed = 0.02
 
 [node name="DialogBox" type="ColorRect" parent="."]
 anchor_left = 0.5

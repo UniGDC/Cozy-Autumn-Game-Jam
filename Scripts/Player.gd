@@ -186,6 +186,7 @@ func apply_gravity(delta: float) -> void:
 	
 
 func jump() -> void:
+	$JumpSound.play()
 	velocity.y = jump_velocity
 
 

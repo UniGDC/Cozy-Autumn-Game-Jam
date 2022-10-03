@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/le funny.mp3-70718f561ee46db633de444b4c29e49a.mp3str"
+
+[deps]
+
+source_file="res://Art/le funny.mp3"
+dest_files=[ "res://.import/le funny.mp3-70718f561ee46db633de444b4c29e49a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

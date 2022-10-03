@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Levels/Level 5.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Levels/Win.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Art/Among Us Kill  Sound Effect.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Art/le funny.mp3" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade in"
@@ -76,3 +77,5 @@ margin_bottom = 360.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="WinMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -20.0

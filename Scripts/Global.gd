@@ -51,6 +51,6 @@ func win() -> void:
 	$KillEffect.play()
 	stop_music()
 	get_tree().change_scene_to(win_screen)
-	$WinMusic.play()
 	yield(get_tree().create_timer(0.6), "timeout")
+	$WinMusic.play()
 	$KillEffect.stop()

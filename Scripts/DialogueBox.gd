@@ -49,7 +49,6 @@ func getDialog() -> Array:
 #		return output
 #	else:
 #		return []
-	print(Global.current_level)
 	return Global.level_dialogue[Global.current_level]
  
 func nextPhrase() -> void:

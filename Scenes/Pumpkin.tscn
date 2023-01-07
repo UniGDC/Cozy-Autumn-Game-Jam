@@ -92,7 +92,7 @@ margin_right = 44.0
 margin_bottom = 25.0
 
 [node name="InteractZone" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone"]

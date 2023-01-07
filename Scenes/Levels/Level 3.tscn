@@ -395,7 +395,7 @@ position = Vector2( 326, 238 )
 position = Vector2( 135, 328 )
 
 [node name="Lamp4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 200, 233 )
+position = Vector2( 184, 233 )
 
 [node name="Wall2" type="StaticBody2D" parent="."]
 position = Vector2( -10, 183 )
